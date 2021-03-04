@@ -8,15 +8,15 @@ const { BrowserWindow } = electron;
 let mainWindow;
 
 const LOAD_URL = url.format({
-  pathname: path.join(__dirname, '/polar-web/build/index.html'),
+  pathname: path.join(__dirname, '/webapp/build/index.html'),
   protocol: 'file:',
   slashes: true,
 });
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    title: 'Polar',
-    backgroundColor: '#FCF6E5',
+    title: 'Timeman',
+    backgroundColor: '#FFFFFF',
     titleBarStyle: 'hiddenInset',
     webPreferences: {
       webSecurity: false,
@@ -26,36 +26,7 @@ function createWindow() {
   // mainWindow.webContents.openDevTools();
 
   mainWindow.loadURL(LOAD_URL);
-
-  const menu = Menu.buildFromTemplate([
-    {
-      label: 'Polar',
-      submenu: [
-        {
-          label: 'Thoát ứng dụng',
-          role: 'quit',
-        },
-      ],
-    },
-    {
-      label: 'Edit',
-      submenu: [
-        { label: 'Undo', accelerator: 'CmdOrCtrl+Z', selector: 'undo:' },
-        { label: 'Redo', accelerator: 'Shift+CmdOrCtrl+Z', selector: 'redo:' },
-        { type: 'separator' },
-        { label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
-        { label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
-        { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
-        {
-          label: 'Select All',
-          accelerator: 'CmdOrCtrl+A',
-          selector: 'selectAll:',
-        },
-      ],
-    },
-  ]);
-  Menu.setApplicationMenu(menu);
-
+  
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
