@@ -19,7 +19,8 @@ function App() {
   useEffect(() => {
     let intervalId;
     if (currentUser) {
-      intervalId = setInterval(() => getStatus(), 30000)
+      getStatus()
+      intervalId = setInterval(() => getStatus(), 15000)
     }
 
     return () => intervalId &&  clearInterval(intervalId)
@@ -100,7 +101,7 @@ function App() {
               onClick={handleResetWebhook}
               bg="danger700"
               hoverBg="danger800"
-              rounded={{ l: "md" }}
+              m={{ r: "1rem" }}
               prefix={
                 <Icon
                   name="Delete"
@@ -117,7 +118,6 @@ function App() {
               onClick={() => handleStartSchedule(webhook)}
               bg="info700"
               hoverBg="info800"
-              rounded={{ r: "md" }}
               prefix={
                 <Icon
                   name="Play"
